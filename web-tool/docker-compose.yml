@@ -1,0 +1,39 @@
+version: '3.0'
+services:
+  adminer:
+    container_name: adminer
+    image: sqrt3/adminer
+    ports:
+      - 8080:8080
+    networks:
+      - skynet
+
+  mailcatcher:
+    container_name: mailcatcher
+    image: sqrt3/mailcatcher
+    ports:
+      - 1080:1080
+      - 25:1025
+    networks:
+      - skynet
+
+  redis-commander:
+    container_name: redis-commander
+    image: tenstartups/redis-commander
+    command: --redis-host redis
+    ports:
+      - 8081:8081
+    networks:
+      - skynet
+
+  reddie:
+    container_name: reddie
+    image: get-reddie.com/reddie
+    ports:
+      - 8088:443
+    networks:
+      - skynet
+
+networks:
+  skynet:
+    external: true

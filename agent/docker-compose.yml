@@ -1,0 +1,19 @@
+version: '3.0'
+services:
+  ssh-agent:
+    container_name: ssh-agent
+    image: docksal/ssh-agent
+    volumes:
+      - ssh-agent:/.ssh-agent
+      - $HOME/.ssh:/root/.ssh
+      - $HOME/Dropbox/env/.key:/root/.keys
+
+volumes:
+  bundler:
+    external: true
+  ssh-agent:
+    external: true
+
+networks:
+  skynet:
+    external: true
