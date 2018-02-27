@@ -30,14 +30,16 @@ $ fig up -d redis
 $ fig up -d mongo
 ```
 
-| name       | local fowarding port | user | password |
-|:-----------|---------------------:|:-----|:---------|
-| postgres   | 5432                 | root |          |
-| mysql5.7   | 3307                 | root |          |
-| mysql5.6   | 3306                 | root |          |
-| mysql8.0   | 3380                 | root |          |
-| redis      | 6379                 | -    |          |
-| mongo db   | 27017                | -    |          |
+| db             | name      | local fowarding port | user | password |
+|:---------------|:----------|---------------------:|:-----|:---------|
+| postgres 9.6.3 | postgres  | 5432                 | root |          |
+| mysql 5.7      | mysql_5_7 | 3307                 | root |          |
+| mysql 5.6      | mysql_5_6 | 3306                 | root |          |
+| mysql 8.0      | mysql_8_0 | 3380                 | root |          |
+| Redis 4.*      | redis     | 6379                 | -    |          |
+| MongoDB 3.4    | mongo     | 27017                | -    |          |
+
+各dbのデータは ~/opt/var/lib 以下に保存される
 
 * web-tool
 
@@ -49,7 +51,7 @@ $ fig up -d redis-commander
 $ fig up -d reddie
 ```
 
-| app             | url                    | remarks       |
+| name            | url                    | remarks       |
 |:----------------|:-----------------------|:--------------|
 | adminer         | http://localhost:8080  |               |
 | mailcatcher     | http://localhost:1080  | smtp port: 25 |
