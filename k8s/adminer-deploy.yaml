@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: adminer
+  labels:
+    env: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: development
+      tier: web
+      app: adminer
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        env: development
+        tier: web
+        app: adminer
+    spec:
+      containers:
+        - image: sqrt3/adminer
+          name: adminer
+          ports:
+            - containerPort: 8080
+      restartPolicy: Always

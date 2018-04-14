@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: local-pv-redis
+  labels:
+    type: local
+spec:
+  storageClassName: redis-data
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: $HOME/opt/var/lib/redis
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-pvc-redis
+  labels:
+    env: development
+    tier: storage
+spec:
+  storageClassName: redis-data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

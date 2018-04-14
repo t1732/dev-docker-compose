@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mailcatcher
+  labels:
+    env: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: development
+      tier: web
+      app: mailcatcher
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        env: development
+        tier: web
+        app: mailcatcher
+    spec:
+      containers:
+        - image: sqrt3/mailcatcher
+          name: mailcatcher
+          ports:
+            - containerPort: 1080
+            - containerPort: 1025
+      restartPolicy: Always

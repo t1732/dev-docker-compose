@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailcatcher
+  labels:
+    type: development
+    tier: web
+spec:
+  ports:
+    - name: "http"
+      port: 1080
+      nodePort: 31080  # 30000-32767
+    - name: "smtp"
+      port: 1025
+      nodePort: 31025
+  selector:
+    env: development
+    tier: web
+    app: mailcatcher
+  type: NodePort
