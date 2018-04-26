@@ -41,6 +41,13 @@ kubectl apply -f redis-svc.yaml
 kubectl apply -f redis-deploy.yaml
 ```
 
+### memcache
+
+```
+kubectl apply -f memcache-svc.yaml
+kubectl apply -f memcache-deploy.yaml
+```
+
 ## Dashboardを起動する
 
 ```
