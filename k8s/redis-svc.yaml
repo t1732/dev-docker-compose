@@ -12,4 +12,5 @@ spec:
   selector:
     env: development
     tier: db
+    app: redis
   type: NodePort

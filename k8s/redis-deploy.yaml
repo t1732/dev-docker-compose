@@ -10,6 +10,7 @@ spec:
     matchLabels:
       env: development
       tier: db
+      app: redis
   strategy:
     type: Recreate
   template:
@@ -17,6 +18,7 @@ spec:
       labels:
         env: development
         tier: db
+        app: redis
     spec:
       containers:
         - image: redis:4-alpine
