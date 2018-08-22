@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: maildev
+  labels:
+    env: development
+    tier: web
+    app: maildev
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      nodePort: 31080  # 30000-32767
+    - name: "smtp"
+      port: 25
+      nodePort: 31025
+  selector:
+    env: development
+    tier: web
+    app: maildev
+  type: NodePort

@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: maildev
+  labels:
+    env: development
+    tier: web
+    app: maildev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      env: development
+      tier: web
+      app: maildev
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        env: development
+        tier: web
+        app: maildev
+    spec:
+      containers:
+        - image: djfarrelly/maildev
+          name: maildev
+          ports:
+            - containerPort: 80
+            - containerPort: 25
+      restartPolicy: Always
