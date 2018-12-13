@@ -8,11 +8,11 @@ services:
     networks:
       - skynet
 
-  mailcatcher:
-    container_name: mailcatcher
-    image: sqrt3/mailcatcher
+  maildev:
+    container_name: maildev
+    image: djfarrelly/maildev
     ports:
-      - 1080:1080
+      - 80:1080
       - 25:1025
     networks:
       - skynet

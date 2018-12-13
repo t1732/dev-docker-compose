@@ -48,6 +48,44 @@ kubectl apply -f memcache-svc.yaml
 kubectl apply -f memcache-deploy.yaml
 ```
 
+### web-tools
+
+```
+kubectl apply -f adminer-svc.yaml
+kubectl apply -f adminer-deploy.yaml
+kubectl apply -f maildev-svc.yaml
+kubectl apply -f maildev-deploy.yaml
+```
+
+#### adminer
+
+```
+open http://localhost:30808
+```
+
+#### maildev
+
+```
+open http://localhost:31080
+```
+
+* client setting
+
+```.env
+export SMTP_PORT=31025
+```
+
+```ruby
+Rails.application.configure do
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: false,
+    address: ENV.fetch('SMTP_ADDRESS') { '127.0.0.1' },
+    port:    ENV.fetch('SMTP_PORT') { 25 },
+  }
+end
+```
+
 ## Dashboardを起動する
 
 ```

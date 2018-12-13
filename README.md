@@ -46,7 +46,7 @@ $ fig up -d mongo
 ```bash
 $ cd web-tool
 $ fig up -d adminer
-$ fig up -d mailcatcher
+$ fig up -d maildev
 $ fig up -d redis-commander
 $ fig up -d reddie
 ```
@@ -54,7 +54,7 @@ $ fig up -d reddie
 | name            | url                    | remarks       |
 |:----------------|:-----------------------|:--------------|
 | adminer         | http://localhost:8080  |               |
-| mailcatcher     | http://localhost:1080  | smtp port: 25 |
+| maildev         | http://localhost:1080  | smtp port: 25 |
 | redis-commander | http://localhost:8081  |               |
 | reddie          | https://localhost:8088 |               |
 
