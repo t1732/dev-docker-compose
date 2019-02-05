@@ -89,26 +89,9 @@ end
 ## Dashboardを起動する
 
 ```
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/alternative/kubernetes-dashboard.yaml
 ```
 
 ```
-kubectl -n kube-system edit service kubernetes-dashboard
+open http://localhost:31665
 ```
-
-```
-  spec:
-    ports:
-      - port: 443
-        protocol: TCP
-        targetPort: 8443
-+       nodePort: 30000
-- type: ClusterIP
-+ type: NodePort
-```
-
-```
-open https://localhost:30000
-```
-
-* ログインはSKIPでOK
