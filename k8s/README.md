@@ -86,6 +86,30 @@ Rails.application.configure do
 end
 ```
 
+#### registry
+
+```
+envsubst < registry-volume.yaml | kubectl apply -f -
+kubectl apply -f registry-svc.yaml
+kubectl apply -f registry-deploy.yaml
+```
+
+* Docker for Mac setting
+
+Added "0.0.0.0:5000" insecure registry in the Docker for Mac preferences 'Daemon' tab
+
+* docker build
+
+```
+docker build --cache-from=0.0.0.0:5000/[repository]/[image]:[tag] -t 0.0.0.0:5000/[repository]/[image]:[tag] .
+```
+
+* docker push
+
+```
+docker push 0.0.0.0:5000/[repository]/[image]:[tag]
+```
+
 ## Dashboardを起動する
 
 ```
