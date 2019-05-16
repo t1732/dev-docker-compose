@@ -9,9 +9,9 @@ metadata:
 spec:
   ports:
     - port: 8080
-      nodePort: 30808  # 30000-32767
+      targetPort: 8080
   selector:
     env: development
     tier: web
     app: adminer
-  type: NodePort
+  type: LoadBalancer

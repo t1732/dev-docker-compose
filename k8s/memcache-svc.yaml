@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
     - port: 11211
-      nodePort: 31211  # 30000-32767
+      targetPort: 11211
   selector:
     env: development
     tier: db
     app: memcache
-  type: NodePort
+  type: LoadBalancer

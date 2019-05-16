@@ -30,7 +30,7 @@ kubectl apply -f mysql-5-7-deploy.yaml
 local接続例
 
 ```
-mysql -u root -h 127.0.0.1 -P 32307
+mysql -u root -h 127.0.0.1 -P 3306
 ```
 
 ### redis
@@ -60,19 +60,19 @@ kubectl apply -f maildev-deploy.yaml
 #### adminer
 
 ```
-open http://localhost:30808
+open http://localhost:8080
 ```
 
 #### maildev
 
 ```
-open http://localhost:31080
+open http://localhost:8025
 ```
 
 * client setting
 
 ```.env
-export SMTP_PORT=31025
+export SMTP_PORT=1025
 ```
 
 ```ruby

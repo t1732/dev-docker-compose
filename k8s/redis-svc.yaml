@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
     - port: 6379
-      nodePort: 32379  # 30000-32767
+      targetPort: 6379
   selector:
     env: development
     tier: db
     app: redis
-  type: NodePort
+  type: LoadBalancer

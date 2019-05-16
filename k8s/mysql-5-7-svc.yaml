@@ -8,9 +8,9 @@ metadata:
 spec:
   ports:
     - port: 3306
-      nodePort: 32307  # 30000-32767
+      targetPort: 3306
   selector:
     env: development
     tier: db
     app: mysql-5-7
-  type: NodePort
+  type: LoadBalancer
