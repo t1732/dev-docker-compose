@@ -2,10 +2,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: maildev
-  labels:
-    env: development
-    tier: web
-    app: maildev
 spec:
   ports:
     - name: "http"
@@ -15,7 +11,5 @@ spec:
       port: 1025
       targetPort: 25
   selector:
-    env: development
-    tier: web
     app: maildev
   type: LoadBalancer

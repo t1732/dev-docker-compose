@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-redis
-  labels:
-    type: local
+  name: redis-pv
 spec:
   storageClassName: redis-data
   capacity:
@@ -17,10 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: local-pvc-redis
-  labels:
-    env: development
-    tier: storage
+  name: redis-pvc
 spec:
   storageClassName: redis-data
   accessModes:

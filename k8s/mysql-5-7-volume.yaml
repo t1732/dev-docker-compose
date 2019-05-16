@@ -1,9 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-mysql-5-7
-  labels:
-    type: local
+  name: mysql-5-7-pv
 spec:
   storageClassName: mysql-5-7-data
   capacity:
@@ -17,10 +15,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: local-pvc-mysql-5-7
-  labels:
-    env: development
-    tier: storage
+  name: mysql-5-7-pvc
 spec:
   storageClassName: mysql-5-7-data
   accessModes:

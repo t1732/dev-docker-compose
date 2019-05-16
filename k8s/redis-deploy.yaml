@@ -2,23 +2,19 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: redis
-  labels:
-    env: development
 spec:
   replicas: 1
   selector:
     matchLabels:
-      env: development
-      tier: db
       app: redis
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
+        app: redis
         env: development
         tier: db
-        app: redis
     spec:
       containers:
         - image: redis:4-alpine
@@ -32,4 +28,4 @@ spec:
       volumes:
         - name: redis-data
           persistentVolumeClaim:
-            claimName: local-pvc-redis
+            claimName: redis-pvc

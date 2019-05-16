@@ -2,23 +2,19 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: mysql-5-7
-  labels:
-    env: development
 spec:
   replicas: 1
   selector:
     matchLabels:
-      env: development
-      tier: db
       app: mysql-5-7
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
+        app: mysql-5-7
         env: development
         tier: db
-        app: mysql-5-7
     spec:
       containers:
         - image: mysql:5.7
@@ -40,4 +36,4 @@ spec:
       volumes:
         - name: mysql-data
           persistentVolumeClaim:
-            claimName: local-pvc-mysql-5-7
+            claimName: mysql-5-7-pvc

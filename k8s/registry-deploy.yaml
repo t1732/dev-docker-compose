@@ -26,4 +26,4 @@ spec:
       volumes:
         - name: registry-data
           persistentVolumeClaim:
-            claimName: local-pvc-registry
+            claimName: registry-pvc
