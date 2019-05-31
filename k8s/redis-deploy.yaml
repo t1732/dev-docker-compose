@@ -1,20 +1,18 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis
+  labels:
+    app: redis
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: redis
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: redis
-        env: development
-        tier: db
     spec:
       containers:
         - image: redis:4-alpine
@@ -24,7 +22,6 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: redis-data
-      restartPolicy: Always
       volumes:
         - name: redis-data
           persistentVolumeClaim:

@@ -1,24 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: memcache
+  labels:
+    app: memcache
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: memcache
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: memcache
-        env: development
-        tier: db
     spec:
       containers:
         - image: memcached:alpine
           name: memcache
           ports:
             - containerPort: 11211
-      restartPolicy: Always

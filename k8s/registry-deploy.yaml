@@ -1,14 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: registry
+  labels:
+    app: registry
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: registry
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
@@ -22,7 +22,6 @@ spec:
           volumeMounts:
             - mountPath: /var/lib/registry
               name: registry-data
-      restartPolicy: Always
       volumes:
         - name: registry-data
           persistentVolumeClaim:
