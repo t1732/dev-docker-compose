@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postfix
+  labels:
+    app: postfix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postfix
+  template:
+    metadata:
+      labels:
+        app: postfix
+    spec:
+      containers:
+        - name: postfix
+          image: takeyamajp/postfix
+          env:
+            - name: AUTH_USER
+              value: user
+            - name: AUTH_PASSWORD
+              value: password
+            - name: DISABLE_SMTP_AUTH_ON_PORT_25
+              value: "false"
+          ports:
+            - containerPort: 25
