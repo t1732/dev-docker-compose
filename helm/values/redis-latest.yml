@@ -2,8 +2,7 @@ image:
   tag: latest
 
 architecture: standalone
-
-cluster:
+auth:
   enabled: false
 
 master:
