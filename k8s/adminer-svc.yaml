@@ -4,7 +4,7 @@ metadata:
   name: adminer
 spec:
   ports:
-    - port: 8080
+    - port: 8089
       targetPort: 8080
   selector:
     app: adminer

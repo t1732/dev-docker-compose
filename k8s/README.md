@@ -117,5 +117,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/
 ```
 
 ```
+kubectl -n kube-system edit service kubernetes-dashboard
+```
+
+
+```
 open http://localhost:31665
 ```
