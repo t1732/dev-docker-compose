@@ -1,0 +1,19 @@
+image:
+  tag: latest
+
+architecture: standalone
+
+cluster:
+  enabled: false
+
+master:
+  service:
+    annotations: {}
+    type: LoadBalancer
+    port: 6379
+    targetPort: 6379
+  persistence:
+    existingClaim: redis-pvc
+
+metrics:
+  enabled: true

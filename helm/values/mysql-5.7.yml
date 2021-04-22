@@ -1,0 +1,46 @@
+image: "mysql"
+imageTag: "5.7"
+
+# mysqlAllowEmptyPassword: true
+# allowEmptyRootPassword: true
+mysqlRootPassword: password
+
+args:
+  - --character-set-server=utf8mb4
+  - --collation-server=utf8mb4_unicode_ci
+
+ssl:
+  enabled: false
+
+configurationFiles: {}
+#  mysql.cnf: |-
+#    [mysqld]
+#    skip-name-resolve
+#    ssl-ca=/ssl/ca.pem
+#    ssl-cert=/ssl/server-cert.pem
+#    ssl-key=/ssl/server-key.pem
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClass: hostpath
+  existingClaim: mysql-5-7-pvc
+  annotations: {}
+
+service:
+  annotations: {}
+  type: LoadBalancer
+  port: 3306
+  targetPort: 3306
+
+initContainer:
+  resources:
+    requests:
+      memory: 10Mi
+      cpu: 10m
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
