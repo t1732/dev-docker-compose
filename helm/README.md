@@ -21,7 +21,7 @@ envsubst < ../k8s/mysql-5-7-volume.yaml | kubectl apply -f -
 * install
 
 ```
-helm install mysql-5-7 -f values/mysql-5.7.yml stable/mysql 
+helm install mysql-5-7 -f values/mysql-5.7.yml bitnami/mysql 
 ```
 
 ### redis 5.0

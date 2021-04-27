@@ -3,7 +3,7 @@ kind: PersistentVolume
 metadata:
   name: registry-pv
 spec:
-  storageClassName: registry-data
+  storageClassName: hostpath
   capacity:
     storage: 5Gi
   accessModes:
@@ -17,7 +17,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: registry-pvc
 spec:
-  storageClassName: registry-data
+  storageClassName: hostpath
   accessModes:
     - ReadWriteOnce
   resources:

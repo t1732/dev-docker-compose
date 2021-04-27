@@ -15,6 +15,11 @@ brew install gettext
 brew link --force gettext
 ```
 
+## Storage Class の登録
+```
+kubectl apply -f storage-class.yaml
+```
+
 ## サービスの登録
 
 * ローカルから接続する場合はnodePortに指定したポートから接続する

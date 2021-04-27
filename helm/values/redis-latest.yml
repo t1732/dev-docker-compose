@@ -15,4 +15,4 @@ master:
     existingClaim: redis-pvc
 
 metrics:
-  enabled: true
+  enabled: false
