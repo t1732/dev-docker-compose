@@ -11,7 +11,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: $HOME/opt/var/lib/mysql_5.6
+    path: $HOME/.local/data/mysql_5.7
 
 ---
 apiVersion: v1

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metabase
+  labels:
+    app: metabase
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metabase
+  template:
+    metadata:
+      labels:
+        app: metabase
+    spec:
+      containers:
+        - image: metabase/metabase
+          name: metabase
+          env:
+            - name: MB_DB_FILE
+              value: /metabase-data/metabase.db
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /metabase-data
+              name: metabase-data
+      volumes:
+        - name: metabase-data
+          persistentVolumeClaim:
+            claimName: metabase-pvc
