@@ -1,0 +1,105 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spigot
+  labels:
+    app: spigot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spigot
+  template:
+    metadata:
+      labels:
+        app: spigot
+    spec:
+      containers:
+        - image: itzg/minecraft-server:2021.12.0-java15
+          name: spigot
+          env:
+            - name: TZ
+              value: "Asia/Tokyo"
+            - name: EULA
+              value: "TRUE"
+            - name: ENABLE_RCON
+              value: "true"
+            - name: RCON_PASSWORD
+              value: "spigot"
+            - name: RCON_PORT
+              value: "25575"
+            - name: VERSION
+              value: "1.16.5"
+            - name: TYPE
+              value: "SPIGOT"
+            # - name: BUILD_FROM_SOURCE
+            #   value: "true"
+            - name: SPIGOT_DOWNLOAD_URL
+              value: "https://cdn.getbukkit.org/spigot/spigot-1.16.5.jar"
+            - name: SERVER_NAME
+              value: "spigot server"
+            - name: DIFFICULTY
+              value: "normal"
+            # -name: WHITELIST
+            #  value: ""
+            # - name OPS
+            #   value: ""
+            - name: MAX_PLAYERS
+              value: "1"
+            - name: MAX_WORLD_SIZE
+              value: "1000000"
+            - name: ALLOW_NETHER
+              value: "true"
+            - name: ANNOUNCE_PLAYER_ACHIEVEMENTS
+              value: "true"
+            - name: ENABLE_COMMAND_BLOCK
+              value: "true"
+            - name: FORCEGAME_MODE
+              value: "false"
+            - name: GENERATE_STRUCTURES
+              value: "true"
+            - name: HARDCORE
+              value: "false"
+            - name: MAX_BUILD_HEIGHT
+              value: "256"
+            - name: MAX_TICK_TIME
+              value: "60000"
+            - name: SPAWN_ANIMALS
+              value: "true"
+            - name: SPAWN_MONSTERS
+              value: "true"
+            - name: SPAWN_NPCS
+              value: "true"
+            - name: SPAWN_PROTECTION
+              value: "0"
+            - name: VIEW_DISTANCE
+              value: "10"
+            # - name: LEVEL_SEED
+            #   value: ""
+            - name: GAME_MODE
+              value: "survival"
+            - name: MOTD
+              value: "wellcome enjoy plaing."
+            - name: PVP
+              value: "false"
+            - name: LEVEL_TYPE
+              value: "LARGEBIOMES"
+            # - name: MODPACK
+            #   value: "https://xxx"
+            # - name: MODS
+            #   value: "https://xx,https://xxx,"
+            # - name: REMOVE_OLD_MODS
+            #   value: "TRUE"
+            - name: ONLINE_MODE
+              value: "true"
+            - name: MEMORY
+              value: "2048M"
+          ports:
+            - containerPort: 25565
+          volumeMounts:
+            - mountPath: /data
+              name: minecraft-data
+      volumes:
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: spigot-pvc
