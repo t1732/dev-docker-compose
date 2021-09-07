@@ -5,6 +5,9 @@ architecture: standalone
 auth:
   enabled: false
 
+commonConfiguration: |-
+  save 60 1000
+
 master:
   service:
     annotations: {}
