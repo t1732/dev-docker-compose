@@ -15,7 +15,7 @@ spec:
         app: spigot
     spec:
       containers:
-        - image: itzg/minecraft-server:2021.12.0-java15
+        - image: itzg/minecraft-server:java16
           name: spigot
           env:
             - name: TZ
@@ -29,13 +29,13 @@ spec:
             - name: RCON_PORT
               value: "25575"
             - name: VERSION
-              value: "1.16.5"
+              value: "1.17.1"
             - name: TYPE
               value: "SPIGOT"
             # - name: BUILD_FROM_SOURCE
             #   value: "true"
             - name: SPIGOT_DOWNLOAD_URL
-              value: "https://cdn.getbukkit.org/spigot/spigot-1.16.5.jar"
+              value: "https://download.getbukkit.org/spigot/spigot-1.17.1.jar"
             - name: SERVER_NAME
               value: "spigot server"
             - name: DIFFICULTY
@@ -47,7 +47,7 @@ spec:
             - name: MAX_PLAYERS
               value: "1"
             - name: MAX_WORLD_SIZE
-              value: "1000000"
+              value: "100000"
             - name: ALLOW_NETHER
               value: "true"
             - name: ANNOUNCE_PLAYER_ACHIEVEMENTS
